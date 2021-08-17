@@ -1745,7 +1745,7 @@ function logOut() {
     sessionStorage.clear();
     //window.localStorage.clear();
 
-    window.location = "https://localhost:3000/app.html";
+    window.location = "https://nervous-aryabhata-655da7.netlify.app/app.html";
 }
 
 function openPersonalFolder() {
