@@ -977,6 +977,8 @@ window.onload = function () {
   console.log(`variable: ${rememberMe}`);
   if (rememberMe) {
     document.getElementById("email").value = localStorage.getItem("correo");
-    document.getElementById("submit-btn").click();
+    setTimeout(function () {
+      document.getElementById("submit-btn").click();
+    }, 500);
   }
 };
