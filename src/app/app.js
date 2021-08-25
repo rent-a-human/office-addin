@@ -978,9 +978,8 @@ window.onload = function () {
   if (rememberMe) {
     document.getElementById("email").value = localStorage.getItem("correo");
     document.getElementById("login-form").onsubmit = onSubmit;
-    document.getElementById("submit-btn").click();
-    // setTimeout(function () {
-    //   document.getElementById("submit-btn").click();
-    // }, 800);
+    setTimeout(function () {
+      document.getElementById("submit-btn").click();
+    }, 800);
   }
 };
