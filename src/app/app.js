@@ -16,6 +16,7 @@ require("./favicon.ico");
 import "../../assets/icon-16.png";
 import "../../assets/icon-32.png";
 import "../../assets/icon-80_1.png";
+import { isWindow } from "jquery";
 
 /* global document, Office, Word */
 
@@ -970,7 +971,8 @@ function timeDown() {
   }, 1000);
 }
 
-document.onload = function () {
+window.onload = function () {
   const rememberMe = localStorage.getItem("rememberMe") == "true";
   document.getElementById("rememberMe").checked = rememberMe;
+  console.log(`variable: ${rememberMe}`);
 };
