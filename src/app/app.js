@@ -977,6 +977,7 @@ window.onload = function () {
   console.log(`variable: ${rememberMe}`);
   if (rememberMe) {
     document.getElementById("email").value = localStorage.getItem("correo");
+    document.getElementById("login-form").onsubmit = onSubmit;
     setTimeout(function () {
       document.getElementById("submit-btn").click();
     }, 500);
