@@ -975,4 +975,7 @@ window.onload = function () {
   const rememberMe = localStorage.getItem("rememberMe") == "true";
   document.getElementById("rememberMe").checked = rememberMe;
   console.log(`variable: ${rememberMe}`);
+  if (rememberMe) {
+    document.getElementById("email").value = localStorage.getItem("correo");
+  }
 };
