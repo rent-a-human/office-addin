@@ -980,6 +980,6 @@ window.onload = function () {
     document.getElementById("login-form").onsubmit = onSubmit;
     setTimeout(function () {
       document.getElementById("submit-btn").click();
-    }, 2000);
+    }, 1200);
   }
 };
