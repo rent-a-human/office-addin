@@ -67,8 +67,8 @@ export async function runWord() {
                 const buff = Buffer.from(data, "utf-8");
                 const base64 = buff.toString("base64");
                 //const thisSlice = parseInt(localStorage.getItem("slide"));
-                localStorage.setItem(`word-document${indice + 1}`, base64);
-                console.log(`Word to PDF y guardado en LocalStorage ${indice + 1}`);
+                sessionStorage.setItem(`word-document${indice + 1}`, base64);
+                console.log(`Word to PDF y guardado en sessionStorage ${indice + 1}`);
                 //localStorage.setItem("slide", thisSlice + 1);
               }
               // if (indice == file.sliceCount - 1) {
