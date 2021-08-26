@@ -16,16 +16,15 @@ require("./favicon.ico");
 import "../../assets/icon-16.png";
 import "../../assets/icon-32.png";
 import "../../assets/icon-80_1.png";
-import { isWindow } from "jquery";
 
-/* global document, Office, Word */
+// global document, Office, Word */
 
-let prodEnvironment;
+//let prodEnvironment;
 let haveCamera;
 let userIp;
 let iter = 0;
 let terms = [];
-let customerFirstName;
+//let customerFirstName;
 let userFromOffice = false;
 let userIsActive = false;
 let isNewUser = false;
@@ -306,7 +305,7 @@ function validateEmail() {
           console.log(`iteracion: ${iter}`);
           //Verificar contraseña
           var pass1 = document.getElementById("password1");
-          var pass2 = document.getElementById("password2");
+          //var pass2 = document.getElementById("password2");
           var isValid = pass1.classList.contains("valid");
           console.log(`isvalid: ${isValid}`);
           if (!isValid && !userFromOffice) {
@@ -577,8 +576,7 @@ function nextStep(respuesta) {
       routerInstance.navigate(["login"]);
       break;
     case "Password":
-      let fromOffice = localStorage.getItem("userFromOffice") == "true";
-      if (fromOffice) {
+      if (localStorage.getItem("userFromOffice") == "true") {
         var content = getIdFromOffice();
         console.log(content);
         document.getElementById("password").value = sessionService.authority;
@@ -898,21 +896,21 @@ customerMobile.addEventListener("keyup", function () {
   localStorage.setItem("customerMobile", customerMobile.value);
 });
 
-togglePassword.addEventListener("click", function (e) {
+togglePassword.addEventListener("click", function () {
   // toggle the type attribute
   const type = password.getAttribute("type") === "password" ? "text" : "password";
   password.setAttribute("type", type);
   // toggle the eye slash icon
   this.classList.toggle("fa-eye-slash");
 });
-togglePassword1.addEventListener("click", function (e) {
+togglePassword1.addEventListener("click", function () {
   // toggle the type attribute
   const type = password1.getAttribute("type") === "password" ? "text" : "password";
   password1.setAttribute("type", type);
   // toggle the eye slash icon
   this.classList.toggle("fa-eye-slash");
 });
-togglePassword2.addEventListener("click", function (e) {
+togglePassword2.addEventListener("click", function () {
   // toggle the type attribute
   const type = password2.getAttribute("type") === "password" ? "text" : "password";
   password2.setAttribute("type", type);
