@@ -56,27 +56,30 @@ export async function runWord() {
         const file = result.value;
         console.log(`slices: ${file.sliceCount}`);
         let contador = 0;
-        localStorage.setItem("slide", "1");
+        //let currentSlice = 0;
+        //localStorage.setItem("slide", "1");
         do {
           file.getSliceAsync(contador, (result) => {
             if (result.status === Office.AsyncResultStatus.Succeeded) {
+              console.log(result);
+              currentSlice++;
               const { data } = result.value;
               if (data) {
                 const buff = Buffer.from(data, "utf-8");
                 const base64 = buff.toString("base64");
-                const thisSlice = parseInt(localStorage.getItem("slide"));
-                localStorage.setItem(`word-document${thisSlice}`, base64);
-                console.log(`Word to PDF y guardado en LocalStorage ${thisSlice}`);
-                localStorage.setItem("slide", thisSlice + 1);
+                //const thisSlice = parseInt(localStorage.getItem("slide"));
+                localStorage.setItem(`word-document${contador}`, base64);
+                console.log(`Word to PDF y guardado en LocalStorage ${contador}`);
+                //localStorage.setItem("slide", thisSlice + 1);
               }
             }
+          });
+          file.closeAsync((result) => {
+            console.log(result.status);
           });
           contador++;
           console.log(contador);
         } while (contador < file.sliceCount);
-        file.closeAsync((result) => {
-          console.log(result.status);
-        });
       } else {
         console.log("Error al cargar pdf ");
       }
