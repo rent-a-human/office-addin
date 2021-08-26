@@ -63,7 +63,6 @@ export async function runWord() {
 
               const { data } = result.value;
               const indice = result.value.index;
-              console.log(ind);
               console.log(indice);
               if (data) {
                 const buff = Buffer.from(data, "utf-8");
