@@ -50,7 +50,7 @@ export async function runWord() {
       documentName = url.substring(url.lastIndexOf("/") + 1);
     }
 
-    Office.context.document.getFileAsync(Office.FileType.Pdf, { sliceSize: 4194304 }, (result) => {
+    Office.context.document.getFileAsync(Office.FileType.Pdf, { sliceSize: 2097152 }, (result) => {
       if (result.status === Office.AsyncResultStatus.Succeeded) {
         localStorage.setItem("word-document-name1", documentName);
         const file = result.value;
