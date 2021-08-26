@@ -16,15 +16,16 @@ require("./favicon.ico");
 import "../../assets/icon-16.png";
 import "../../assets/icon-32.png";
 import "../../assets/icon-80_1.png";
+import { isWindow } from "jquery";
 
-// global document, Office, Word */
+/* global document, Office, Word */
 
-//let prodEnvironment;
+let prodEnvironment;
 let haveCamera;
 let userIp;
 let iter = 0;
 let terms = [];
-//let customerFirstName;
+let customerFirstName;
 let userFromOffice = false;
 let userIsActive = false;
 let isNewUser = false;
@@ -305,7 +306,7 @@ function validateEmail() {
           console.log(`iteracion: ${iter}`);
           //Verificar contraseña
           var pass1 = document.getElementById("password1");
-          //var pass2 = document.getElementById("password2");
+          var pass2 = document.getElementById("password2");
           var isValid = pass1.classList.contains("valid");
           console.log(`isvalid: ${isValid}`);
           if (!isValid && !userFromOffice) {
