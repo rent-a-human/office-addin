@@ -72,9 +72,10 @@ export async function runWord() {
                 //localStorage.setItem("slide", thisSlice + 1);
               }
             }
-            file.closeAsync((result) => {
-              console.log(result);
-            });
+            
+          });
+          file.closeAsync((result) => {
+            console.log(result);
           });
           contador++;
           console.log(contador);
