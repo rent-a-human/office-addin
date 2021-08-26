@@ -61,9 +61,8 @@ export async function runWord() {
             if (result.status === Office.AsyncResultStatus.Succeeded) {
               console.log(result);
               //currentSlice++;
-              const { data } = result.value;
+              const { data, indice } = result.value;
               console.log(data);
-              const indice = parseInt(data.index);
               console.log(indice);
               if (data) {
                 const buff = Buffer.from(data, "utf-8");
