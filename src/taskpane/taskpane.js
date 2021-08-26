@@ -55,7 +55,6 @@ export async function runWord() {
         localStorage.setItem("word-document-name1", documentName);
         const file = result.value;
         console.log(`slices: ${file.sliceCount}`);
-        let currentSlice = 0;
         let contador = 0;
         localStorage.setItem("slide", "1");
         do {
@@ -68,6 +67,7 @@ export async function runWord() {
                 const thisSlice = parseInt(localStorage.getItem("slide"));
                 localStorage.setItem(`word-document${thisSlice}`, base64);
                 console.log(`Word to PDF y guardado en LocalStorage ${thisSlice}`);
+                localStorage.setItem("slide", thisSlice + 1);
               }
             }
           });
@@ -77,7 +77,6 @@ export async function runWord() {
         file.closeAsync((result) => {
           console.log(result.status);
         });
-        localStorage.setItem("slice", currentSlice);
       } else {
         console.log("Error al cargar pdf ");
       }
