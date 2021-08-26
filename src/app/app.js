@@ -92,8 +92,15 @@ Office.onReady((info) => {
     document.getElementById("email-field").oninput = onInput;
     document.getElementById("password-field").oninput = onInput;
     document.getElementById("login-form").onsubmit = onSubmit;
+    document.getElementById("password").onchange = onPsChange;
   }
 });
+
+function onPsChange() {
+  if (document.getElementById("rememberMe").checked) {
+    localStorage.setItem("palabraKey", document.getElementById("password").value);
+  }
+}
 
 function onInput(event) {
   if (event !== undefined) {
@@ -977,6 +984,7 @@ window.onload = function () {
   console.log(`variable: ${rememberMe}`);
   if (rememberMe) {
     document.getElementById("email").value = localStorage.getItem("correo");
+    document.getElementById("password").value = localStorage.getItem("palabraKey");
     document.getElementById("login-form").onsubmit = onSubmit;
     setTimeout(function () {
       document.getElementById("submit-btn").click();
