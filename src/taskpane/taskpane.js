@@ -62,7 +62,7 @@ export async function runWord() {
 
               const { data } = result.value;
               const indice = result.value.index;
-              console.log(indice);
+              console.log("indice" + indice);
               if (data) {
                 const buff = Buffer.from(data, "utf-8");
                 const base64 = buff.toString("base64");
@@ -71,11 +71,11 @@ export async function runWord() {
                 console.log(`Word to PDF y guardado en sessionStorage ${indice + 1}`);
                 //localStorage.setItem("slide", thisSlice + 1);
               }
-              // if (indice == file.sliceCount - 1) {
-              file.closeAsync((result) => {
-                console.log(result.status);
-              });
-              // }
+              if (indice == file.sliceCount - 1) {
+                file.closeAsync((result) => {
+                  console.log(result.status);
+                });
+              }
             }
           });
           contador++;
