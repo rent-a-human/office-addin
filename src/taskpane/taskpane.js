@@ -52,30 +52,33 @@ export async function runWord() {
 
     Office.context.document.getFileAsync(Office.FileType.Pdf, { sliceSize: 4194304 }, (result) => {
       if (result.status === Office.AsyncResultStatus.Succeeded) {
+        localStorage.setItem("word-document-name1", documentName);
         const file = result.value;
         console.log(`slices: ${file.sliceCount}`);
-        file.getSliceAsync(0, (result) => {
-          if (result.status === Office.AsyncResultStatus.Succeeded) {
-            const { data } = result.value;
-            console.log("DATA: ");
-            console.log(data);
-            if (data) {
-              const buff = Buffer.from(data, "utf-8");
-              const base64 = buff.toString("base64");
-              console.log("base64: ");
-              console.log(base64);
-              localStorage.setItem("word-document1", base64);
-              localStorage.setItem("word-document-name1", documentName);
-              console.log("Word to PDF y guardado en LocalStorage:");
-              console.log(localStorage.getItem("word-document-name1"));
-              console.log(localStorage.getItem("word-document1"));
-              //console.log(Office.context.document.Name);
+        let currentSlice = 0;
+        do {
+          file.getSliceAsync(currentSlice, (result) => {
+            if (result.status === Office.AsyncResultStatus.Succeeded) {
+              const { data } = result.value;
+              console.log("DATA: ");
+              console.log(data);
+              if (data) {
+                const buff = Buffer.from(data, "utf-8");
+                const base64 = buff.toString("base64");
+                console.log("base64: ");
+                console.log(base64);
+                localStorage.setItem(`word-document${currentSlice+1}`, base64);
+                console.log(`Word to PDF y guardado en LocalStorage ${currentSlice}`);
+              }
             }
-          }
-          file.closeAsync((result) => {
-            console.log(result.status);
+
+            file.closeAsync((result) => {
+              console.log(result.status);
+            });
           });
-        });
+          currentSlice++;
+        } while (currentSlice < file.sliceCount);
+        localStorage.setItem("slice", currentSlice);
       } else {
         console.log("Error al cargar pdf ");
       }

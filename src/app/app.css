@@ -191,6 +191,7 @@
       width: 100%;
       font: normal normal 400  15px/19px Montserrat;
       padding: .8rem .85rem .35rem; 
+      max-width: 300px;
       
 
   }  
