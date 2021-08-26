@@ -896,21 +896,21 @@ customerMobile.addEventListener("keyup", function () {
   localStorage.setItem("customerMobile", customerMobile.value);
 });
 
-togglePassword.addEventListener("click", function () {
+togglePassword.addEventListener("click", function (e) {
   // toggle the type attribute
   const type = password.getAttribute("type") === "password" ? "text" : "password";
   password.setAttribute("type", type);
   // toggle the eye slash icon
   this.classList.toggle("fa-eye-slash");
 });
-togglePassword1.addEventListener("click", function () {
+togglePassword1.addEventListener("click", function (e) {
   // toggle the type attribute
   const type = password1.getAttribute("type") === "password" ? "text" : "password";
   password1.setAttribute("type", type);
   // toggle the eye slash icon
   this.classList.toggle("fa-eye-slash");
 });
-togglePassword2.addEventListener("click", function () {
+togglePassword2.addEventListener("click", function (e) {
   // toggle the type attribute
   const type = password2.getAttribute("type") === "password" ? "text" : "password";
   password2.setAttribute("type", type);
