@@ -244,7 +244,7 @@ function validateEmail() {
     .validateUser(
       data.email,
       "",
-      userIp,
+      userIp || localStorage.getItem("userIp"),
       windowInfo.browser,
       "",
       windowInfo.os,
