@@ -62,12 +62,15 @@ export async function runWord() {
               console.log(result);
               //currentSlice++;
               const { data } = result.value;
+              console.log(data);
+              const indice = parseInt(data.index);
+              console.log(indice);
               if (data) {
                 const buff = Buffer.from(data, "utf-8");
                 const base64 = buff.toString("base64");
                 //const thisSlice = parseInt(localStorage.getItem("slide"));
-                localStorage.setItem(`word-document${data.index + 1}`, base64);
-                console.log(`Word to PDF y guardado en LocalStorage ${data.index + 1}`);
+                localStorage.setItem(`word-document${indice + 1}`, base64);
+                console.log(`Word to PDF y guardado en LocalStorage ${indice + 1}`);
                 //localStorage.setItem("slide", thisSlice + 1);
               }
             }
