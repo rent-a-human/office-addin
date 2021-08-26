@@ -57,7 +57,7 @@ export async function runWord() {
         console.log(`slices: ${file.sliceCount}`);
         let contador = 0;
         do {
-          await file.getSliceAsync(contador, (result) => {
+          file.getSliceAsync(contador, (result) => {
             if (result.status === Office.AsyncResultStatus.Succeeded) {
 
               const { data } = result.value;
