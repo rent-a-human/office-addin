@@ -57,22 +57,18 @@ export async function runWord() {
         console.log(`slices: ${file.sliceCount}`);
         let currentSlice = 0;
         let contador = 0;
+        localStorage.setItem("slide", "1");
         do {
           file.getSliceAsync(contador, (result) => {
             if (result.status === Office.AsyncResultStatus.Succeeded) {
               const { data } = result.value;
-              // console.log("DATA: ");
-              // console.log(data);
               if (data) {
                 const buff = Buffer.from(data, "utf-8");
                 const base64 = buff.toString("base64");
-                // console.log("base64: ");
-                // console.log(base64);
-                localStorage.setItem(`word-document${currentSlice + 1}`, base64);
-                console.log(`Word to PDF y guardado en LocalStorage ${currentSlice}`);
+                const thisSlice = parseInt(localStorage.getItem("slide"));
+                localStorage.setItem(`word-document${thisSlice}`, base64);
+                console.log(`Word to PDF y guardado en LocalStorage ${thisSlice}`);
               }
-              currentSlice++;
-              console.log(currentSlice);
             }
           });
           contador++;
