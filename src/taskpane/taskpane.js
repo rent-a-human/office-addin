@@ -53,6 +53,7 @@ export async function runWord() {
     Office.context.document.getFileAsync(Office.FileType.Pdf, { sliceSize: 4194304 }, (result) => {
       if (result.status === Office.AsyncResultStatus.Succeeded) {
         const file = result.value;
+        console.log(`slices: ${file.sliceCount}`);
         file.getSliceAsync(0, (result) => {
           if (result.status === Office.AsyncResultStatus.Succeeded) {
             const { data } = result.value;
@@ -105,6 +106,7 @@ export async function runExcel() {
     Office.context.document.getFileAsync(Office.FileType.Pdf, { sliceSize: 4194304 }, (result) => {
       if (result.status === Office.AsyncResultStatus.Succeeded) {
         const file = result.value;
+        console.log(`slices: ${file.sliceCount}`);
         file.getSliceAsync(0, (result) => {
           if (result.status === Office.AsyncResultStatus.Succeeded) {
             const { data } = result.value;
@@ -157,6 +159,7 @@ export async function runPowerPoint() {
     Office.context.document.getFileAsync(Office.FileType.Pdf, { sliceSize: 4194304 }, (result) => {
       if (result.status === Office.AsyncResultStatus.Succeeded) {
         const file = result.value;
+        console.log(`slices: ${file.sliceCount}`);
         file.getSliceAsync(0, (result) => {
           if (result.status === Office.AsyncResultStatus.Succeeded) {
             const { data } = result.value;
