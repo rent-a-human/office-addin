@@ -58,6 +58,7 @@ export async function runWord() {
         let contador = 0;
         do {
           file.getSliceAsync(contador, (result) => {
+            console.log("count " + contador);
             if (result.status === Office.AsyncResultStatus.Succeeded) {
 
               const { data } = result.value;
@@ -71,10 +72,10 @@ export async function runWord() {
                 console.log(`Word to PDF y guardado en sessionStorage ${indice + 1}`);
                 //localStorage.setItem("slide", thisSlice + 1);
               }
-              file.closeAsync((result) => {
-                console.log(result);
-              });
             }
+            file.closeAsync((result) => {
+              console.log(result);
+            });
           });
           contador++;
           console.log(contador);
