@@ -60,9 +60,11 @@ export async function runWord() {
           file.getSliceAsync(contador, (result) => {
             if (result.status === Office.AsyncResultStatus.Succeeded) {
               console.log(result);
-              //currentSlice++;
-              const { data, indice } = result.value;
-              console.log(data);
+
+              const { data } = result.value;
+              const { indice } = result.value.index;
+              const ind = result.value.index;
+              console.log(ind);
               console.log(indice);
               if (data) {
                 const buff = Buffer.from(data, "utf-8");
