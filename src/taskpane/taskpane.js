@@ -59,7 +59,6 @@ export async function runWord() {
         do {
           file.getSliceAsync(contador, (result) => {
             if (result.status === Office.AsyncResultStatus.Succeeded) {
-              console.log(result);
 
               const { data } = result.value;
               const indice = result.value.index;
@@ -74,12 +73,14 @@ export async function runWord() {
               }
             }
           });
-          file.closeAsync((result) => {
-            console.log(result.status);
-          });
           contador++;
           console.log(contador);
         } while (contador < file.sliceCount);
+        console.log('b4');
+        file.closeAsync((result) => {
+          console.log(result.status);
+        });
+        console.log('b5');
       } else {
         console.log("Error al cargar pdf ");
       }
