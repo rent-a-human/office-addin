@@ -62,8 +62,7 @@ export async function runWord() {
               console.log(result);
 
               const { data } = result.value;
-              const { indice } = result.value.index;
-              const ind = result.value.index;
+              const indice = result.value.index;
               console.log(ind);
               console.log(indice);
               if (data) {
