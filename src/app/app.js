@@ -604,6 +604,9 @@ function nextStep(respuesta) {
         for (let element of document.getElementsByClassName("secondScreen")) {
           element.style.display = "block";
         }
+        if (localStorage.getItem("rememberMe") == "true") {
+          document.getElementById("password").value = localStorage.getItem("palabraKey");
+        }
       }
       break;
   }
@@ -984,7 +987,6 @@ window.onload = function () {
   console.log(`variable: ${rememberMe}`);
   if (rememberMe) {
     document.getElementById("email").value = localStorage.getItem("correo");
-    document.getElementById("password").value = localStorage.getItem("palabraKey");
     document.getElementById("login-form").onsubmit = onSubmit;
     setTimeout(function () {
       document.getElementById("submit-btn").click();
