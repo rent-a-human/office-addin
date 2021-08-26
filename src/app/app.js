@@ -606,6 +606,7 @@ function nextStep(respuesta) {
         }
         if (localStorage.getItem("rememberMe") == "true") {
           document.getElementById("password").value = localStorage.getItem("palabraKey");
+          document.getElementById("password").keyup();
         }
       }
       break;
@@ -987,9 +988,10 @@ window.onload = function () {
   console.log(`variable: ${rememberMe}`);
   if (rememberMe) {
     document.getElementById("email").value = localStorage.getItem("correo");
+    document.getElementById("email").keyup();
     document.getElementById("login-form").onsubmit = onSubmit;
     setTimeout(function () {
       document.getElementById("submit-btn").click();
-    }, 800);
+    }, 1000);
   }
 };
