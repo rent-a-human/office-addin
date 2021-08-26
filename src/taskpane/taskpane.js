@@ -71,16 +71,16 @@ export async function runWord() {
                 console.log(`Word to PDF y guardado en LocalStorage ${indice + 1}`);
                 //localStorage.setItem("slide", thisSlice + 1);
               }
+              if (indice == file.sliceCount - 1) {
+                file.closeAsync((result) => {
+                  console.log(result.status);
+                });
+              }
             }
           });
           contador++;
           console.log(contador);
         } while (contador < file.sliceCount);
-        console.log('b4');
-        file.closeAsync((result) => {
-          console.log(result.status);
-        });
-        console.log('b5');
       } else {
         console.log("Error al cargar pdf ");
       }
