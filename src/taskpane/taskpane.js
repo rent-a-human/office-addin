@@ -70,11 +70,13 @@ export async function runWord() {
                 // console.log(base64);
                 localStorage.setItem(`word-document${currentSlice + 1}`, base64);
                 console.log(`Word to PDF y guardado en LocalStorage ${currentSlice}`);
-                currentSlice++;
               }
+              currentSlice++;
+              console.log(currentSlice);
             }
           });
           contador++;
+          console.log(contador);
         } while (contador < file.sliceCount);
         file.closeAsync((result) => {
           console.log(result.status);
