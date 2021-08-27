@@ -61,13 +61,14 @@ export async function runWord() {
             file.getSliceAsync(currentSlice, (result) => {
               if (result.status === Office.AsyncResultStatus.Succeeded) {
                 const { data } = result.value;
+                const indice = result.value.index;
                 if (data) {
                   const buff = Buffer.from(data, "utf-8");
                   const base64 = buff.toString("base64");
-                  sessionStorage.setItem(`word-document${currentSlice}`, base64);
-                  console.log(`Word to PDF y guardado en sessionStorage ${currentSlice}`);
+                  sessionStorage.setItem(`word-document${indice + 1}`, base64);
+                  console.log(`Word to PDF y guardado en sessionStorage ${indice + 1}`);
                   //localStorage.setItem("slide", thisSlice + 1);
-                  resolve(currentSlice >= totalSlices ? "ok" : "no");
+                  resolve(indice >= totalSlices ? "ok" : "no");
                 }
               }
               file.closeAsync((result) => {
