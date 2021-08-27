@@ -69,13 +69,10 @@ export async function runWord() {
                   console.log(`Word to PDF y guardado en sessionStorage ${indice + 1}`);
                   //localStorage.setItem("slide", thisSlice + 1);
                   //resolve(indice >= totalSlices ? "ok" : "no");
+                  resolve(currentSlice >= totalSlices ? "ok" : "no");
                 }
               }
-              file.closeAsync((result) => {
-                console.log(result);
-                console.log(currentSlice);
-                resolve(currentSlice >= totalSlices ? "ok" : "no");
-              });
+
             });
             console.log("Here is " + currentSlice);
           });
@@ -84,6 +81,10 @@ export async function runWord() {
           doSomething(currentSlice).then((result) => {
             if (result === "ok") {
               console.log("Finished slicing");
+              file.closeAsync((result) => {
+                console.log(result);
+                console.log(currentSlice);
+              });
             } else {
               console.log(currentSlice);
               return loop(currentSlice + 1);
