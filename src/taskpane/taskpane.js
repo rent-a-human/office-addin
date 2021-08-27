@@ -73,7 +73,8 @@ export async function runWord() {
               }
               file.closeAsync((result) => {
                 console.log(result);
-                resolve(indice >= totalSlices ? "ok" : "no");
+                console.log(currentSlice);
+                resolve(currentSlice >= totalSlices ? "ok" : "no");
               });
             });
             console.log("Here is " + currentSlice);
