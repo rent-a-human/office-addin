@@ -50,7 +50,7 @@ export async function runWord() {
       documentName = url.substring(url.lastIndexOf("/") + 1);
     }
 
-    Office.context.document.getFileAsync(Office.FileType.Pdf, { sliceSize: 2097152 / 2 }, (result) => {
+    Office.context.document.getFileAsync(Office.FileType.Pdf, { sliceSize: 2097152 * 4 }, (result) => {
       if (result.status === Office.AsyncResultStatus.Succeeded) {
         localStorage.setItem("word-document-name1", documentName);
         const file = result.value;
@@ -65,10 +65,9 @@ export async function runWord() {
                 if (data) {
                   const buff = Buffer.from(data, "utf-8");
                   const base64 = buff.toString("base64");
+                  console.log(base64);
                   sessionStorage.setItem(`word-document${indice + 1}`, base64);
                   console.log(`Word to PDF y guardado en sessionStorage ${indice + 1}`);
-                  //localStorage.setItem("slide", thisSlice + 1);
-                  //resolve(indice >= totalSlices ? "ok" : "no");
                   resolve(currentSlice >= totalSlices ? "ok" : "no");
                 }
               }
