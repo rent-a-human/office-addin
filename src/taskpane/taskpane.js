@@ -55,31 +55,64 @@ export async function runWord() {
         localStorage.setItem("word-document-name1", documentName);
         const file = result.value;
         console.log(`slices: ${file.sliceCount}`);
-        let contador = 0;
-        do {
-          file.getSliceAsync(contador, (result) => {
-            console.log("count " + contador);
-            if (result.status === Office.AsyncResultStatus.Succeeded) {
-
-              const { data } = result.value;
-              const indice = result.value.index;
-              console.log("indice " + indice);
-              if (data) {
-                const buff = Buffer.from(data, "utf-8");
-                const base64 = buff.toString("base64");
-                //const thisSlice = parseInt(localStorage.getItem("slide"));
-                sessionStorage.setItem(`word-document${indice + 1}`, base64);
-                console.log(`Word to PDF y guardado en sessionStorage ${indice + 1}`);
-                //localStorage.setItem("slide", thisSlice + 1);
+        const totalSlices = file.sliceCount;
+        const doSomething = (currentSlice) =>
+          new Promise((resolve) => {
+            file.getSliceAsync(currentSlice, (result) => {
+              if (result.status === Office.AsyncResultStatus.Succeeded) {
+                const { data } = result.value;
+                if (data) {
+                  const buff = Buffer.from(data, "utf-8");
+                  const base64 = buff.toString("base64");
+                  sessionStorage.setItem(`word-document${currentSlice}`, base64);
+                  console.log(`Word to PDF y guardado en sessionStorage ${currentSlice}`);
+                  //localStorage.setItem("slide", thisSlice + 1);
+                  resolve(currentSlice >= totalSlices ? "ok" : "no");
+                }
               }
-            }
-            file.closeAsync((result) => {
-              console.log(result);
+              file.closeAsync((result) => {
+                console.log(result);
+              });
             });
+            console.log("Here is " + currentSlice);
           });
-          contador++;
-          console.log(contador);
-        } while (contador < file.sliceCount);
+
+        const loop = (currentSlice) =>
+          doSomething(currentSlice).then((result) => {
+            if (result === "ok") {
+              console.log("Finished slicing");
+            } else {
+              console.log(currentSlice);
+              return loop(currentSlice + 1);
+            }
+          });
+
+        loop(0).then(() => console.log("all done!"));
+        // let contador = 0;
+        // do {
+        //   file.getSliceAsync(currentSlice, (result) => {
+        //     console.log("count " + contador);
+        //     if (result.status === Office.AsyncResultStatus.Succeeded) {
+
+        //       const { data } = result.value;
+        //       const indice = result.value.index;
+        //       console.log("indice " + indice);
+        //       if (data) {
+        //         const buff = Buffer.from(data, "utf-8");
+        //         const base64 = buff.toString("base64");
+        //         //const thisSlice = parseInt(localStorage.getItem("slide"));
+        //         sessionStorage.setItem(`word-document${indice + 1}`, base64);
+        //         console.log(`Word to PDF y guardado en sessionStorage ${indice + 1}`);
+        //         //localStorage.setItem("slide", thisSlice + 1);
+        //       }
+        //     }
+        //     file.closeAsync((result) => {
+        //       console.log(result);
+        //     });
+        //   });
+        //   contador++;
+        //   console.log(contador);
+        // } while (contador < file.sliceCount);
       } else {
         console.log("Error al cargar pdf ");
       }
