@@ -68,11 +68,12 @@ export async function runWord() {
                   sessionStorage.setItem(`word-document${indice + 1}`, base64);
                   console.log(`Word to PDF y guardado en sessionStorage ${indice + 1}`);
                   //localStorage.setItem("slide", thisSlice + 1);
-                  resolve(indice >= totalSlices ? "ok" : "no");
+                  //resolve(indice >= totalSlices ? "ok" : "no");
                 }
               }
               file.closeAsync((result) => {
                 console.log(result);
+                resolve(indice >= totalSlices ? "ok" : "no");
               });
             });
             console.log("Here is " + currentSlice);
