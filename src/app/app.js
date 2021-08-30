@@ -1003,6 +1003,6 @@ window.onload = function () {
 
   var select = document.getElementById("countries-select");
   for (let index in countries_array) {
-    select.options[select.options.length] = new Option(countries_array[index], index);
+    select.options[select.options.length] = new Option(countries_array[index], countries_array[index].slice(1));
   }
 };
