@@ -124,15 +124,7 @@
 .attention-component .close path:first-child{fill:#fff}
 .attention-component .title{font-size:16px;color:#fff}
 .attention-component .content{font-size:14px}
-.attention-component .input
-{
-    width:100%;
-    border:1px solid #f4f4f4;
-    border-radius:5px;
-    padding:10px 20px;
-    margin-top:20px
-}
-.attention-component .input:focus{outline-offset:0;outline:none}
+
 .attention-component .button{padding:10px 20px;width:50%;display:block;margin:20px auto 0 auto;border:0;cursor:pointer;border-radius:5px;background-color:#3394de;color:#fff}
 .attention-component .buttons{margin-top:20px;text-align:center}
 .attention-component .cancel,.attention-component .confirm{padding:10px 20px;border:0;border-radius:5px;color:#fff;cursor:pointer}
@@ -186,9 +178,9 @@
       min-width: 160px;
       cursor: pointer;
   }
-  
+
   #my_input {
-    display: inline;    
+    display: inline-flex;    
     }
 
   .MF-input{
