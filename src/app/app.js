@@ -386,6 +386,11 @@ function createNewUser() {
       } else {
         console.log("ERROR:");
         console.log(Respuesta);
+        document.getElementById("load-banner").style.display = "none";
+        new attention.Alert({
+          title: "Error en la creación del usuario",
+          content: Respuesta.message,
+        });
         return;
       }
     });
