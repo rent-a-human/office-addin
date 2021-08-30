@@ -1001,7 +1001,7 @@ window.onload = function () {
   var countries_array = ["+57", "+58", "+1"];
 
   var select = document.getElementById("countries-select");
-  for (index in countries_array) {
+  for (let index in countries_array) {
     select.options[select.options.length] = new Option(countries_array[index], index);
   }
 };
