@@ -376,6 +376,7 @@ function createNewUser() {
       document.getElementById("password1").value,
       sessionService.user,
       sessionService.customerMobile,
+      document.getElementById("countries-select").value,
       sessionService.userIp
     )
     .then((Respuesta) => {

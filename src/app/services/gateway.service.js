@@ -35,7 +35,7 @@ export class GatewayService {
         }).then((response) => response.json());
     }
 
-    createCustomer(name, lastname, password, user, mobile, ip) {
+    createCustomer(name, lastname, password, user, mobile, country, ip) {
         localStorage.setItem('phoneUser', mobile);
         const data = {
             firstName: name,
@@ -43,7 +43,7 @@ export class GatewayService {
             password: password,
             user: user,
             customerMobile: mobile,
-            customerMobileCountryCode: "57",
+            customerMobileCountryCode: country,
             publicIP: ip,
         };
         return fetch(`${url}Gateway/api/v2_0/createCustomer`, {
