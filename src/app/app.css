@@ -186,6 +186,10 @@
       min-width: 160px;
       cursor: pointer;
   }
+  
+  #my_input {
+    display: inline;    
+    }
 
   .MF-input{
       width: 100%;
@@ -193,7 +197,6 @@
       padding: .8rem .85rem .35rem; 
       /*max-width: 300px;*/
       
-
   }  
 
   .input:focus{
