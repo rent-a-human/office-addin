@@ -463,9 +463,9 @@ form select {
     border-style: solid;
     color: #3f3f3f;
     font: normal normal 400  15px/19px Montserrat;
-    padding: .4rem .85rem .35rem; 
+    padding: .4rem .85rem .25rem; 
     width: 90%;
-    height: 40px;
+    height: 36px;
 }
 /*
 form input[type=password] {
