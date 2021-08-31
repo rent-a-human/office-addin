@@ -1001,8 +1001,16 @@ window.onload = function () {
   }
   var countries_array = ["+57", "+58", "+1"];
 
-  var select = document.getElementById("countries-select");
-  for (let index in countries_array) {
-    select.options[select.options.length] = new Option(countries_array[index], countries_array[index].slice(1));
-  }
+  filedataService.getTokenCountries().then((response) => {
+    filedataService.getCountries(response.auth_token).then((respuesta) => {
+      respuesta.forEach((country) => {
+        countries_array.push("+" + country.country_phone_code);
+      });
+      countries_array.sort();
+      var select = document.getElementById("countries-select");
+      for (let index in countries_array) {
+        select.options[select.options.length] = new Option(countries_array[index], countries_array[index].slice(1));
+      }
+    });
+  });
 };
