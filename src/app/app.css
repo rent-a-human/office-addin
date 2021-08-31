@@ -288,13 +288,13 @@
 
 .MF-input-big{
     width: 80%;
-    font: normal normal 400  20px/24px Montserrat;
+    font: normal normal 400  18px/22px Montserrat;
     padding: .35rem .65rem; 
     border-radius: 8px;
     border-width: 1px;
     border-color: #3f3f3f;
     text-align: center;
-    letter-spacing: 25px;
+    letter-spacing: 20px;
 }
 
 .MF-inner {
