@@ -1013,7 +1013,7 @@ window.onload = function () {
       for (let index in countries_array) {
         select.options[select.options.length] = new Option(countries_array[index], countries_array[index].slice(1));
       }
-      select.value = "+57";
+      select.value = "57";
     });
   });
 };
