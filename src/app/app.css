@@ -462,7 +462,10 @@ form select {
     border-color: #c5c5c5;
     border-style: solid;
     color: #3f3f3f;
-    padding: .8rem .85rem .35rem; 
+    font: normal normal 400  15px/19px Montserrat;
+    padding: .4rem .85rem .35rem; 
+    width: 90%;
+    height: 40px;
 }
 /*
 form input[type=password] {
