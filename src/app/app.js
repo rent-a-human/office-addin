@@ -463,7 +463,7 @@ function askOTPfromUser() {
     console.log(`the pin: ${pin}`);
     gatewayService.validate(sessionService.authId, pin).then((Respuesta) => {
       if (Respuesta.data.hit) {
-        console.log("Que falta?");
+        //console.log("Que falta?");
         console.log(Respuesta);
         gatewayService.acceptTerms(sessionService.userIp, sessionService.idCustomer).then((Resp) => {
           if (Resp.success) {

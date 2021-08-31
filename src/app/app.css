@@ -320,6 +320,7 @@
     border-style: none;
     font: normal normal 400 extra-expanded 16px/18px Montserrat;
     min-width: 180px;
+    cursor: pointer;
 }
 
 .MF-big {
