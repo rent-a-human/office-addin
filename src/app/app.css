@@ -241,6 +241,7 @@
 /* Left and right column */
 .column.side {
   width: 20%;
+  padding-right: 10px;
 }
 
 /* Middle column */
