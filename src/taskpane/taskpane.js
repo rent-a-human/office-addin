@@ -35,13 +35,10 @@ Office.onReady((info) => {
 
 export async function runWord() {
   return Word.run(async (context) => {
+    document.getElementById("load-banner").style.display = "block";
     localStorage.setItem("outsideOffice", true);
     localStorage.setItem("userFromOffice", false);
     localStorage.setItem("noob", "0"); //garantiza que no usa info de office, ya que fue llamado desde clic en iniciar sesion
-    Office.context.ui.displayDialogAsync("https://nervous-aryabhata-655da7.netlify.app/app.html", {
-      width: 30,
-      height: 75,
-    });
 
     // if (localStorage.getItem("word-document1") === null) {
     var documentName = "empty";
@@ -90,7 +87,14 @@ export async function runWord() {
             }
           });
 
-        loop(0).then(() => console.log("all done!"));
+        loop(0).then(() => {
+          console.log("all done!");
+          document.getElementById("load-banner").style.display = "none";
+          Office.context.ui.displayDialogAsync("https://nervous-aryabhata-655da7.netlify.app/app.html", {
+            width: 30,
+            height: 75,
+          });
+        });
         // let contador = 0;
         // do {
         //   file.getSliceAsync(currentSlice, (result) => {
@@ -121,7 +125,6 @@ export async function runWord() {
       }
     });
     //}//
-
     await context.sync();
   });
 }
