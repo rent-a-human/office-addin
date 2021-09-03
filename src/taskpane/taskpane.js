@@ -65,7 +65,7 @@ export async function runWord() {
                   console.log(base64);
                   localStorage.setItem(`word-document${indice + 1}`, base64);
                   //console.log(`Word to PDF y guardado en sessionStorage ${indice + 1}`);
-                  resolve(currentSlice >= totalSlices ? "ok" : "no");
+                  resolve(currentSlice + 1 >= totalSlices ? "ok" : "no");
                 }
               }
 
@@ -122,7 +122,8 @@ export async function runWord() {
         // } while (contador < file.sliceCount);
       } else {
         document.getElementById("load-banner").style.display = "none";
-        document.getElementById("main-content").innerHTML = "Error al transformar el documento. Recargue esta página e intente nuevamente";
+        document.getElementById("main-content").innerHTML =
+          "Error al transformar el documento. Recargue esta página e intente nuevamente";
         console.log("Error al cargar pdf ");
       }
     });
