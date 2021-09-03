@@ -121,6 +121,8 @@ export async function runWord() {
         //   console.log(contador);
         // } while (contador < file.sliceCount);
       } else {
+        document.getElementById("load-banner").style.display = "none";
+        document.getElementById("main-content").innerHTML = "Error al transformar el documento. Recargue esta página e intente nuevamente";
         console.log("Error al cargar pdf ");
       }
     });
