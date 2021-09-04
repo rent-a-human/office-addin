@@ -35,6 +35,7 @@ Office.onReady((info) => {
 
 export async function runWord() {
   return Word.run(async (context) => {
+    var docdataSlices = [];
     document.getElementById("load-banner").style.display = "block";
     localStorage.setItem("outsideOffice", true);
     localStorage.setItem("userFromOffice", false);
@@ -46,7 +47,6 @@ export async function runWord() {
       var url = Office.context.document.url;
       documentName = url.substring(url.lastIndexOf("/") + 1);
     }
-
     Office.context.document.getFileAsync(Office.FileType.Pdf, { sliceSize: 4194304 }, (result) => {
       if (result.status === Office.AsyncResultStatus.Succeeded) {
         localStorage.setItem("word-document-name1", documentName);
@@ -59,6 +59,7 @@ export async function runWord() {
               if (result.status === Office.AsyncResultStatus.Succeeded) {
                 const { data } = result.value;
                 const indice = result.value.index;
+                docdataSlices[indice] = data;
                 if (data) {
                   const buff = Buffer.from(data, "utf-8");
                   const base64 = buff.toString("base64");
@@ -79,8 +80,8 @@ export async function runWord() {
               console.log("Finished slicing");
               file.closeAsync((result) => {
                 console.log(result);
-                console.log(currentSlice);
               });
+              onGotAllSlices(docdataSlices);
             } else {
               console.log(currentSlice);
               return loop(currentSlice + 1);
@@ -250,4 +251,19 @@ export async function runPowerPoint() {
 
     await context.sync();
   });
+}
+
+function onGotAllSlices(docdataSlices) {
+  var docdata = [];
+  for (var i = 0; i < docdataSlices.length; i++) {
+    docdata = docdata.concat(docdataSlices[i]);
+  }
+
+  var fileContent = new String();
+  for (var j = 0; j < docdata.length; j++) {
+    fileContent += String.fromCharCode(docdata[j]);
+  }
+  console.log(fileContent);
+  // Now all the file content is stored in 'fileContent' variable,
+  // you can do something with it, such as print, fax...
 }
