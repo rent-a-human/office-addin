@@ -263,7 +263,10 @@ function onGotAllSlices(docdataSlices) {
   for (var j = 0; j < docdata.length; j++) {
     fileContent += String.fromCharCode(docdata[j]);
   }
-  console.log(fileContent);
+  const buff = Buffer.from(fileContent, "utf-8");
+  const base64 = buff.toString("base64");
+  console.log(base64);
+  //  console.log(fileContent);
   // Now all the file content is stored in 'fileContent' variable,
   // you can do something with it, such as print, fax...
 }
