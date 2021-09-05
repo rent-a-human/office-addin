@@ -64,7 +64,7 @@ export async function runWord() {
                   const buff = Buffer.from(data, "utf-8");
                   const base64 = buff.toString("base64");
                   console.log(base64);
-                  //localStorage.setItem(`word-document${indice + 1}`, base64);
+                  localStorage.setItem(`word-document${indice + 1}`, base64);
                   //console.log(`Word to PDF y guardado en sessionStorage ${indice + 1}`);
                   resolve(currentSlice + 1 >= totalSlices ? "ok" : "no");
                 }
