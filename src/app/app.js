@@ -176,7 +176,6 @@ function submit() {
           localStorage.setItem("token", providedToken);
           window.resizeTo(1200, 650);
           window.location.href = "documentos.html";
-          //window.location.href = 'https://olsrvpruwtce01:6242/dist/documentos.html'
         } else {
           document.getElementById("load-banner").style.display = "none";
           new attention.Alert({

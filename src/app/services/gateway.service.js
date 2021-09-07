@@ -17,6 +17,7 @@ const httpOptions2 = () => ({
 });
 
 const url = "https://olsrvpruwbce01:6595/";
+const publicUrl = "https://apipru.mifirma.co:6594/"
 const GatewayMiFirma = "https://olsrvpruwbce01:6741/";
 
 export class GatewayService {
@@ -88,7 +89,7 @@ export class GatewayService {
         console.log(`processCode: ${processCode}`);
         console.log(`authId: ${processCode}`);
         console.log(data);
-        return fetch(`${url}Gateway/api/v2_0/validate/user`, {
+        return fetch(`${publicUrl}api/v1_0/validate/user`, {
             method: "POST",
             body: JSON.stringify(data),
             headers: httpOptions,
@@ -100,7 +101,7 @@ export class GatewayService {
             data: data,
         };
         console.log(val);
-        return fetch(`${url}Gateway/api/v2_0/validate`, {
+        return fetch(`${publicUrl}api/v1_0/validate`, {
             method: "POST",
             body: JSON.stringify(val),
             headers: httpOptions,
@@ -172,7 +173,7 @@ export class GatewayService {
     }
 
     getUserTerms() {
-        const path = `${url}Gateway/api/v3_0/terms/enabled`;
+        const path = `$${publicUrl}api/v1_0/terms/enabled`;
         return fetch(path, {
             method: "GET",
             headers: httpOptions,
@@ -183,7 +184,7 @@ export class GatewayService {
         const data = {
             activator: activator,
         };
-        return fetch(`${url}Gateway/api/v2_0/customers/activateAccount`, {
+        return fetch(`${publicUrl}api/v1_0/user/activateAccount`, {
             method: "POST",
             body: JSON.stringify(data),
             headers: httpOptions,
